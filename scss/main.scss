@@ -9,8 +9,14 @@ $colors: $orange, $dark-cyan, $deep-cyan;
 $p-white: hsla(0, 0%, 100%, 0.75);
 $off-white: hsl(0, 0%, 95%);
 
+$border-rad: 1rem;
+
 * {
     box-sizing: border-box;
+}
+
+html {
+    height: 100vh;
 }
 
 body {
@@ -19,15 +25,33 @@ body {
     align-items: center;
     justify-content: center;
 
+    height: 100vh;
+    margin: 0;
+
     font: 400 15px "Lexend Deca",sans-serif;
     color: $p-white;
 
     background-color: $off-white;
 }
 
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: $border-rad;
+    overflow: hidden;
+}
+
 h1 {
     font: 700 2rem "Big Shoulders Display",sans-serif;
     color: $off-white;
+}
+
+section {
+    height: 50vh;
+    width: 30vw;
 }
 
 @for $i from 1 through length($colors) {
