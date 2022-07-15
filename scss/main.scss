@@ -1,3 +1,5 @@
+@use "sass:list";
+
 $orange: hsl(31, 77%, 52%);
 $dark-cyan: hsl(184, 100%, 22%);
 $deep-cyan: hsl(179, 100%, 13%);
@@ -26,6 +28,13 @@ body {
 h1 {
     font: 700 2rem "Big Shoulders Display",sans-serif;
     color: $off-white;
+}
+
+@for $i from 1 through length($colors) {
+    $color: nth($colors, $i);
+    section:nth-child(#{$i}) {
+        background-color: $color;
+    }
 }
 
 #attribution {
