@@ -29,6 +29,7 @@ body {
     margin: 0;
 
     font: 400 15px "Lexend Deca",sans-serif;
+    line-height: 1.55rem;
     color: $p-white;
 
     background-color: $off-white;
@@ -45,19 +46,44 @@ main {
 }
 
 h1 {
-    font: 700 2rem "Big Shoulders Display",sans-serif;
+    font: 700 2.7rem "Big Shoulders Display",sans-serif;
     color: $off-white;
-}
-
-section {
-    height: 50vh;
-    width: 30vw;
 }
 
 @for $i from 1 through length($colors) {
     $color: nth($colors, $i);
     section:nth-child(#{$i}) {
         background-color: $color;
+
+        button {
+            color: $color;
+
+            &:hover {
+                background-color: $color;
+            }
+        }
+    }
+}
+
+img {
+    max-width: 5rem;
+}
+
+section {
+    height: 60vh;
+    width: 20vw;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    button {
+        border: none;
+        border-radius: 1rem;
+        height: 2rem;
+        width: 100px;
     }
 }
 
