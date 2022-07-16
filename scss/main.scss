@@ -43,13 +43,13 @@ main {
 
     border-radius: $border-rad;
     overflow: hidden;
+
+    height: 60vh;
+    width: 60vw;
 }
 
-h1 {
-    font: 700 2.7rem "Big Shoulders Display",sans-serif;
-    color: $off-white;
-}
-
+// Cycles through the 3 colors, and assign them to its appropriate section and button.
+// SCSS rocks!
 @for $i from 1 through length($colors) {
     $color: nth($colors, $i);
     section:nth-child(#{$i}) {
@@ -70,25 +70,39 @@ img {
 }
 
 section {
-    height: 60vh;
-    width: 20vw;
-    padding: 3rem;
+    padding: 2.7vw;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
 
+    h1 {
+        font: 700 2.7rem "Big Shoulders Display",sans-serif;
+        color: $off-white;
+        $vertical-margin: 4vh;
+        margin: $vertical-margin 0 $vertical-margin;
+    }
+    
+    p {
+        margin: 0;
+    }
+
     button {
-        border: none;
-        border-radius: 3vh;
-        height: 6vh;
+        $height: 6vh;
+        height: $height;
         width: 75%;
+        margin-top: auto;
 
         transition: background-color 0.2s ease-out;
 
         font-size: 0.9rem;
         background-color: $off-white;
+
+        border: none;
+        // To make rounded ends, the border radius must be half of height.
+        border-radius: $height / 2;
 
         &:hover {
             color: $off-white;
