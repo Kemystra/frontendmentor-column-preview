@@ -44,8 +44,8 @@ main {
     border-radius: $border-rad;
     overflow: hidden;
 
-    height: 60vh;
-    width: 60vw;
+    height: clamp(400px, 60vh, 1000px);
+    width: clamp(800px, 60vw, 1200px);
 }
 
 // Cycles through the 3 colors, and assign them to its appropriate section and button.
@@ -115,4 +115,10 @@ section {
     position: absolute;
     bottom: 0;
     color: black;
+}
+
+@media only screen and (max-width: 450px) {
+    main {
+        flex-direction: column;
+    }
 }
