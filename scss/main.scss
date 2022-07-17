@@ -27,6 +27,7 @@ body {
 
     height: 100vh;
     margin: 0;
+    position: relative;
 
     font: 400 15px "Lexend Deca",sans-serif;
     line-height: 1.55rem;
@@ -70,7 +71,7 @@ img {
 }
 
 section {
-    padding: 2.7vw;
+    padding: 2.7vmax;
     height: 100%;
 
     display: flex;
@@ -90,8 +91,8 @@ section {
     }
 
     button {
-        $height: 6vh;
-        height: $height;
+        --button-height: 6vh;
+        height: var(--button-height);
         width: 75%;
         margin-top: auto;
 
@@ -102,7 +103,8 @@ section {
 
         border: none;
         // To make rounded ends, the border radius must be half of height.
-        border-radius: $height / 2;
+        // calc() is used here because CSS variable is incompatible with SCSS calculation
+        border-radius: calc(var(--button-height) / 2);
 
         &:hover {
             color: $off-white;
@@ -117,8 +119,28 @@ section {
     color: black;
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 500px) {
+    body {
+        height: 210vh;
+    }
+
     main {
         flex-direction: column;
+        width: clamp(260px, 88vw, 350px);
+        height: clamp(1100px, 88%, 2000px);
+    }
+
+    section {
+        padding: 5vh 14vw;
+
+        h1 {
+            margin: 0;
+        }
+
+        button {
+            margin: 0;
+            --button-height: 7vh;
+            width: 65%;
+        }
     }
 }
