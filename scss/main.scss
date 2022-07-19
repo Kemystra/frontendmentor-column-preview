@@ -35,7 +35,7 @@ body {
 
     background-color: $off-white;
 }
-
+// * Note: use vh/vw/vmax/vmin for stuff OUTSIDE of a div, then use %, relative to the box
 main {
     display: flex;
     flex-direction: row;
@@ -45,8 +45,8 @@ main {
     border-radius: $border-rad;
     overflow: hidden;
 
-    height: clamp(400px, 60vh, 1000px);
-    width: clamp(800px, 60vw, 1200px);
+    height: clamp(400px, 65vh, 500px);
+    width: clamp(750px, 65vw, 1200px);
 }
 
 // Cycles through the 3 colors, and assign them to its appropriate section and button.
@@ -71,7 +71,7 @@ img {
 }
 
 section {
-    padding: 2.7vmax;
+    padding: 4.9% 5.51%;
     height: 100%;
 
     display: flex;
@@ -80,9 +80,9 @@ section {
     align-items: flex-start;
 
     h1 {
-        font: 700 2.7rem "Big Shoulders Display",sans-serif;
+        font: 700 2.6rem "Big Shoulders Display",sans-serif;
         color: $off-white;
-        $vertical-margin: 4vh;
+        $vertical-margin: 15%;
         margin: $vertical-margin 0;
     }
     
@@ -91,9 +91,9 @@ section {
     }
 
     button {
-        --button-height: 6vh;
+        --button-height: 12%;
         height: var(--button-height);
-        width: 75%;
+        width: 70%;
         margin-top: auto;
 
         transition: background-color 0.2s ease-out;
@@ -103,8 +103,9 @@ section {
 
         border: none;
         // To make rounded ends, the border radius must be half of height.
-        // calc() is used here because CSS variable is incompatible with SCSS calculation
-        border-radius: calc(var(--button-height) / 2);
+        // The value is actually clamped to half the size of smallest side (here, height)
+        // So any large values will work here
+        border-radius: 999px;
 
         &:hover {
             color: $off-white;
@@ -119,7 +120,7 @@ section {
     color: black;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 500px), (orientation: portrait) {
     body {
         height: 210vh;
     }
@@ -140,7 +141,6 @@ section {
         button {
             margin: 0;
             --button-height: 7vh;
-            width: 65%;
         }
     }
 }
