@@ -11,6 +11,7 @@ $off-white: hsl(0, 0%, 95%);
 
 $border-rad: 0.5rem;
 $main-height: 450px;
+$vertical-end-space: 80px;
 
 * {
     box-sizing: border-box;
@@ -27,10 +28,12 @@ body {
     align-items: center;
     justify-content: center;
 
+    // This is to avoid flex elements from shrinking with small viewports
     flex-shrink: 0;
 
     height: 100%;
-    min-height: $main-height + 80px;
+    // Required for column flex direction
+    min-height: $main-height + $vertical-end-space;
     margin: 0;
     position: relative;
 
@@ -126,13 +129,18 @@ section {
 
 @media only screen and (max-width: 500px), (orientation: portrait) {
     body {
-        height: 210vh;
+        min-height: 550px + $vertical-end-space;
+        height: 210%;
+        flex-shrink: 0;
     }
 
     main {
         flex-direction: column;
+        flex-shrink: 0;
+        $min-section-height: 1100px;
+        min-height: $min-section-height + $vertical-end-space;
         width: clamp(260px, 88vw, 350px);
-        height: clamp(1100px, 88%, 2000px);
+        height: clamp($min-section-height, 88%, 1300px);
     }
 
     section {
